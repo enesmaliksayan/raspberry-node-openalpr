@@ -90,6 +90,7 @@ router.post('/api', (req, res ,next) => {
         }
       });
     });
+    next();
 });
 
 module.exports = router;
