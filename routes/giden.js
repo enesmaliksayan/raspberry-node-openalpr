@@ -87,6 +87,7 @@ router.post('/api', (req, res ,next) => {
           gidenArac.addArac(plateData, (err, arac => {
             if(err) console.log("ERR : ",err);
             console.log("Successful! The plate has been added");
+            next();
           }));
         }
       });
