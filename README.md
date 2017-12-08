@@ -2,9 +2,9 @@ Projenin amacı; Raspberry PI Zero, hareket sensörü ve kamera modülü ile çe
 
 Yazılımı çalıştırmak için bilgisayarınızda Node.js kurulu olmalıdır.
 
-\n1- Projeyi bir klasöre indirin
-\n2- Komut satırı ile o klasöre gidip "npm install" yazın.
-\n3- Komut satırına "node app" yazın.
+1- Projeyi bir klasöre indirin
+2- Komut satırı ile o klasöre gidip "npm install" yazın.
+3- Komut satırına "node app" yazın.
 
 GÖREV ALANLAR;
 Enes Malik SAYAN
