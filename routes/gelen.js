@@ -71,7 +71,7 @@ router.post('/api', (req, res, next) => {
   }
   let sampleFile = req.files.sampleFile;
 
-  sampleFile.mv('public/images/gelen/filename.jpg', function (err) {
+  sampleFile.mv('/public/images/gelen/filename.jpg', function (err) {
     if (err) {
       res.status(500).send();
     }
@@ -79,7 +79,7 @@ router.post('/api', (req, res, next) => {
     var formData = {
       secret_key: 'sk_845db26d9d33d66bb2045418',
       country: 'eu',
-      image: fs.createReadStream('public/images/gelen/filename.jpg')
+      image: fs.createReadStream('/public/images/gelen/filename.jpg')
     };
 
     request.post({ url: 'https://api.openalpr.com/v2/recognize', formData, json: true }, (err, res, body) => {
