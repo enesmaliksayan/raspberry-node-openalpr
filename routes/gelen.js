@@ -87,6 +87,8 @@ router.post('/api', (req, res ,next) => {
           return res.status(500).send("OpenALPR problemi var!")
         }
         if(body.error !== '') {
+          res.send(body.error);
+        } else {
           plateData = body.results[0].plate;
           gelenArac.addArac(plateData, (err, arac => {
             if(err) { return res.status(500).send("Plaka bulunamadı!"); }
