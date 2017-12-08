@@ -3,15 +3,6 @@ var router = express.Router();
 
 var indexModel = require('../models/indexModel');
 
-var son24SaatGirisler;
-var son24SaatCikislar;
-//var son1HaftaGirisler;
-var son1HaftaCikislar;
-var son1AyGirisler;
-var son1AyCikislar;
-var hepsiGiris;
-var hepsiCikis;
-
 router.get('/', (req,res,next) => {
 
   indexModel.getSon24SaatGirisler((err, gelen) => {
