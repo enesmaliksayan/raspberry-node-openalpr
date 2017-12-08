@@ -66,16 +66,15 @@ router.get('/filter/:plaka/:startDate/:finishDate', (req,res,next) => {
 
 router.post('/api', (req, res ,next) => {
   let plateData;
-    if (!req.files){
+    if (!req.files)
       return res.status(400).send('No files were uploaded.');
-    }
+       
     let sampleFile = req.files.sampleFile;
 
     sampleFile.mv('public/images/gelen/filename.jpg', function(err) {
-      if (err){
+      if (err)
         return res.status(500).send(err);
-      }
-
+          
       var formData = {
         secret_key: 'sk_845db26d9d33d66bb2045418',
         country: 'eu',
@@ -84,17 +83,14 @@ router.post('/api', (req, res ,next) => {
 
       request.post({url:'https://api.openalpr.com/v2/recognize', formData, json:true }, (err, res, body) => {
         if (err) {
-          return res.status(500).send("OpenALPR problemi var!")
+          return console.error('upload failed:', err);
         }
-        if(body.error !== '') {
-          res.send("Error");
-        } else {
+        else {
           plateData = body.results[0].plate;
           gelenArac.addArac(plateData, (err, arac) => {
-            if(err) { return res.status(500).send("Plaka bulunamadı!"); }
+            if(err) console.log("ERR : ",err);
             console.log("Successful! The plate has been added");
-            return res.send("Plaka kayıt edildi!");
-          }));
+          });
         }
       });
     });

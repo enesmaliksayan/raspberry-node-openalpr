@@ -1,7 +1,7 @@
 <html>
 
 <body>
-  <!-- GELEN
+  GELEN
   <form ref='uploadForm' id='uploadForm' action='/gelen/api' method='post' encType="multipart/form-data">
     <input type="file" name="sampleFile" />
     <input type='submit' value='Upload!' />
@@ -12,7 +12,7 @@
     <input type='submit' value='Upload!' />
   </form>
 
--->
+
   <div class="container">
     <div class="row">
       <div class="col-lg-4" id="son24Giris">
@@ -104,31 +104,31 @@
       var today = new Date();
       var son24 = new Date();
       son24.setDate(son24.getDate() - 1);
-      window.location.href = '/giden/filter/' + son24 + '/' + today;
+      window.location.href = '/giden/filter/' + son24 + '/' + Date.now();
     })
     $('#son1HaftaGiris').click(function () {
       var today = new Date();
       var son1Hafta = new Date();
       son1Hafta.setDate(son1Hafta.getDate() - 7);
-      window.location.href = '/gelen/filter/' + son1Hafta + '/' + today;
+      window.location.href = '/gelen/filter/' + son1Hafta + '/' + Date.now();
     })
     $('#son1HaftaCikis').click(function () {
       var today = new Date();
       var son1Hafta = new Date();
       son1Hafta.setDate(son1Hafta.getDate() - 7);
-      window.location.href = '/giden/filter/' + son1Hafta + '/' + today;
+      window.location.href = '/giden/filter/' + son1Hafta + '/' + Date.now();
     })
     $('#son1AyGiris').click(function () {
       var today = new Date();
       var son1Ay = new Date();
       son1Ay.setDate(son1Ay.getDate() - 30);
-      window.location.href = '/gelen/filter/' + son1Ay + '/' + today;
+      window.location.href = '/gelen/filter/' + son1Ay + '/' + Date.now();
     })
     $('#son1AyCikis').click(function () {
       var today = new Date();
       var son1Ay = new Date();
       son1Ay.setDate(son1Ay.getDate() - 30);
-      window.location.href = '/giden/filter/' + son1Ay + '/' + today;
+      window.location.href = '/giden/filter/' + son1Ay + '/' + Date.now();
     })
     $('#hepsiGiris').click(function () {
       window.location.href = '/gelen';

@@ -81,14 +81,12 @@ router.post('/api', (req, res ,next) => {
       request.post({url:'https://api.openalpr.com/v2/recognize', formData, json:true }, (err, res, body) => {
         if (err) {
           return console.error('upload failed:', err);
-        }
-        if(body.error !== '') {
+        } else {
           plateData = body.results[0].plate;
-          gidenArac.addArac(plateData, (err, arac => {
+          gidenArac.addArac(plateData, (err, arac) => {
             if(err) console.log("ERR : ",err);
             console.log("Successful! The plate has been added");
-            next();
-          }));
+          });
         }
       });
     });
