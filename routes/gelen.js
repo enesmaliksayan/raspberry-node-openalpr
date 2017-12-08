@@ -66,15 +66,18 @@ router.get('/filter/:plaka/:startDate/:finishDate', (req,res,next) => {
 
 router.post('/api', (req, res ,next) => {
   let plateData;
-    if (!req.files)
+    if (!req.files){
+      console.log("Error1");
       return res.status(400).send('No files were uploaded.');
-       
+    }
     let sampleFile = req.files.sampleFile;
 
     sampleFile.mv('public/images/gelen/filename.jpg', function(err) {
-      if (err)
+      if (err){
+        console.log("Error2")
         return res.status(500).send(err);
-          
+      }
+      res.render('image');
       var formData = {
         secret_key: 'sk_845db26d9d33d66bb2045418',
         country: 'eu',
