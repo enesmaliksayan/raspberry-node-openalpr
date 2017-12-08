@@ -83,7 +83,7 @@ router.post('/api', (req, res ,next) => {
 
       request.post({url:'https://api.openalpr.com/v2/recognize', formData, json:true }, (err, res, body) => {
         if (err) {
-          return console.error('upload failed:', err);
+          console.error('upload failed:', err);
           res.send(err);          
         }
         else {
