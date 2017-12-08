@@ -1,0 +1,142 @@
+<html>
+
+<body>
+  GELEN
+  <form ref='uploadForm' id='uploadForm' action='http://localhost:1111/gelen/api' method='post' encType="multipart/form-data">
+    <input type="file" name="sampleFile" />
+    <input type='submit' value='Upload!' />
+  </form>
+  GİDEN
+  <form ref='uploadForm' id='uploadForm' action='http://localhost:1111/giden/api' method='post' encType="multipart/form-data">
+    <input type="file" name="sampleFile" />
+    <input type='submit' value='Upload!' />
+  </form>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4" id="son24Giris">
+        <div class="ibox">
+          <div class="ibox-content giris">
+            <h5>Son 24 Saatteki Girişler</h5>
+            <h2>{{son24SaatGirisler}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" id="son24Cikis">
+        <div class="ibox">
+          <div class="ibox-content cikis">
+            <h5>Son 24 Saatteki Çıkışlar</h5>
+            <h2>{{son24SaatCikislar}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="ibox">
+          <div class="ibox-content current">
+            <h5>Şu An İçerideki Araba Sayısı</h5>
+            <h2>{{iceridekiAracSayisi}}</h2>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="col-lg-6" id="son1HaftaGiris">
+        <div class="ibox">
+          <div class="ibox-content giris">
+            <h5>Son 1 Haftadaki Girişler</h5>
+            <h2>{{son1HaftaGirisler}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" id="son1HaftaCikis">
+        <div class="ibox">
+          <div class="ibox-content cikis">
+            <h5>Son 1 Haftadaki Çıkışlar</h5>
+            <h2>{{son1HaftaCikislar}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" id="son1AyGiris">
+        <div class="ibox">
+          <div class="ibox-content giris">
+            <h5>Son 1 Aydaki Girişler</h5>
+            <h2>{{son1AyGirisler}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" id="son1AyCikis">
+        <div class="ibox">
+          <div class="ibox-content cikis">
+            <h5>Son 1 Aydaki Çıkışlar</h5>
+            <h2>{{son1AyCikislar}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" id="hepsiGiris">
+        <div class="ibox">
+          <div class="ibox-content giris">
+            <h5>Tüm Zamanlardaki Girişler</h5>
+            <h2>{{hepsiGiris}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" id="hepsiCikis">
+        <div class="ibox">
+          <div class="ibox-content cikis">
+            <h5>Tüm Zamanlardaki Çıkışlar</h5>
+            <h2>{{hepsiCikis}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    $('#son24Giris').click(function () {
+      var today = new Date();
+      var son24 = new Date();
+      son24.setDate(son24.getDate() - 1);
+      window.location.href = '/gelen/filter/' + son24 + '/' + today;
+    })
+    $('#son24Cikis').click(function () {
+      var today = new Date();
+      var son24 = new Date();
+      son24.setDate(son24.getDate() - 1);
+      window.location.href = '/giden/filter/' + son24 + '/' + Date.now();
+    })
+    $('#son1HaftaGiris').click(function () {
+      var today = new Date();
+      var son1Hafta = new Date();
+      son1Hafta.setDate(son1Hafta.getDate() - 7);
+      window.location.href = '/gelen/filter/' + son1Hafta + '/' + Date.now();
+    })
+    $('#son1HaftaCikis').click(function () {
+      var today = new Date();
+      var son1Hafta = new Date();
+      son1Hafta.setDate(son1Hafta.getDate() - 7);
+      window.location.href = '/giden/filter/' + son1Hafta + '/' + Date.now();
+    })
+    $('#son1AyGiris').click(function () {
+      var today = new Date();
+      var son1Ay = new Date();
+      son1Ay.setDate(son1Ay.getDate() - 30);
+      window.location.href = '/gelen/filter/' + son1Ay + '/' + Date.now();
+    })
+    $('#son1AyCikis').click(function () {
+      var today = new Date();
+      var son1Ay = new Date();
+      son1Ay.setDate(son1Ay.getDate() - 30);
+      window.location.href = '/giden/filter/' + son1Ay + '/' + Date.now();
+    })
+    $('#hepsiGiris').click(function () {
+      window.location.href = '/gelen';
+    })
+    $('#hepsiCikis').click(function () {
+      window.location.href = '/giden';
+    })
+  </script>
+</body>
+
+</html>

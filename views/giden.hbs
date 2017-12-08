@@ -1,0 +1,116 @@
+<html>
+  <body>
+    <div class="container">
+        <h2 style="text-align:center">{{title}}</h2>
+        <div class="row">
+            <div class="container">
+                <div class='col-md-3'>
+                    <div class="form-group">
+                        <h4 style="text-align:center">Başlangıç Tarihi</h4>
+                        <div class='input-group date' id='datetimepicker6'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-3'>
+                    <div class="form-group">
+                        <h4 style="text-align:center">Bitiş Tarihi</h4>
+                        <div class='input-group date' id='datetimepicker7'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <form>
+                        <div class="form-group">
+                            <h4 style="text-align:center">Plaka</h4>
+                            <input type="text" class="form-control" id="plaka">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h4 style="text-align:center">İşlem</h4>
+                    <button class="btn btn-default" id="filter">Filtrele</button>
+                    <a href="javascript:window.location.href=window.location.href" class="btn btn-primary pull-right" style="margin:2px"><i class="fa fa-refresh"></i></a>
+                    <a href="/giden" class="btn btn-primary pull-right" style="margin:2px"><i class="fa fa-undo"></i></a>  
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="row">
+                    <th class="col-md-2">{{gidenAraclar.length}} Adet Plaka</th>
+                    <th class="col-md-5">Çıkış Zamanı</th>
+                    <th class="col-md-5">
+                        
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each gidenAraclar}}
+                        <tr class="row">
+                        <td class="col-md-5">{{this.plaka}}</td>
+                        <td class="col-md-5">{{this.tarih}}</td>
+                        <td class="col-md-5"></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    var startDate;
+    var finishDate;
+    var plaka;
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            startDate = $('#datetimepicker6').data("DateTimePicker").date()._d;
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            finishDate = $('#datetimepicker7').data("DateTimePicker").date()._d;
+        });
+    });
+
+    $("#filter").click(function() {
+        let plaka = $("#plaka").val();
+        let q = plaka.toString().replace(/\s/gm,"").toUpperCase();
+        var today = new Date();
+        if(startDate) {
+            if(finishDate) {
+                if(plaka) {
+                    window.location.href = '/giden/filter/'+q+'/'+startDate+'/'+finishDate;
+                }
+                window.location.href = '/giden/filter/'+startDate+'/'+finishDate;
+            } else {
+                if(!plaka) {
+                    window.location.href = '/giden/filter/'+startDate+'/'+today;
+                } else {
+                    window.location.href = '/giden/filter/'+q+'/'+startDate+'/'+today;
+                }
+            }
+        } else {
+            if(finishDate) {
+                alert('Başlangıç tarihi girmeden bitiş tarihi ile filtreleme yapılamaz!');
+            } else if(plaka){
+                window.location.href = '/giden/filter/'+q;
+            }
+        }
+    });
+</script>
+
+  </body>
+</html>

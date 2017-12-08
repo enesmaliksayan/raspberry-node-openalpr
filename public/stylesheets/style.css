@@ -1,0 +1,51 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.create-btn {
+  margin-top: 10px;
+}
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.ibox-content {
+  clear: both;
+  color: white;
+  padding: 15px 20px 50px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+  text-align: center;
+  
+}
+
+.giris {
+  background-color: steelblue;
+  border-radius:  10px
+}
+
+.cikis {
+  background-color: rgb(198, 14, 23);
+  border-radius:  10px
+}
+
+.current {
+  background-color: rgb(14, 136, 3);
+  border-radius:  10px
+}
+
+.navbar {
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+}
