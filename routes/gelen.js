@@ -86,11 +86,15 @@ router.post('/api', (req, res ,next) => {
           return console.error('upload failed:', err);
         }
         else {
-          plateData = body.results[0].plate;
-          gelenArac.addArac(plateData, (err, arac) => {
-            if(err) console.log("ERR : ",err);
-            return console.log("Successful! The plate has been added");
-          });
+          if(!body.results[0]) {
+            return console.log("Plaka bulunamadı!");
+          } else {
+            plateData = body.results[0].plate;
+            gelenArac.addArac(plateData, (err, arac) => {
+              if(err) console.log("ERR : ",err);
+              return console.log("Successful! The plate has been added");
+            });
+          }
         }
       });
     });
