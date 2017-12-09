@@ -90,7 +90,7 @@ router.post('/api', (req, res ,next) => {
             plateData = body.results[0].plate;
             gelenArac.addArac(plateData, (err, arac) => {
               if(err) console.log("ERR : ",err);
-              return console.log("Successful! The plate has been added");
+              return console.log("Plaka başarıyla kayıt edildi!");
             });
           } else {
             return console.log("Plaka bulunamadı!");
