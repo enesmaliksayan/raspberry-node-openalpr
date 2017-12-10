@@ -6,56 +6,67 @@ var GidenArac = require('./gidenArac');
 
 let ObjectId = require('mongodb').ObjectID;
 
+var today = new Date();
+var son24 = new Date();
+var son1Ay = new Date();
+var son1Hafta = new Date();
+
 // Son 24 saatte gelen araçlar
 module.exports.getSon24SaatGirisler = function (callback) {
+    son24.setDate(today.getDate() - 1);
     GelenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60)
+        tarih: {
+            $gt: son24 
         }
     }, callback).sort([['tarih', 'descending']]);
 }
 
 // Son 24 saatte çıkan araçlar
 module.exports.getSon24SaatCikislar = function (callback) {
+    son24.setDate(today.getDate() - 1);
     GidenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60)
+        tarih: {
+            $gt: son24 
         }
     }, callback).sort([['tarih', 'descending']]);
 }
 
 // Son 1 haftada gelen araçlar
 module.exports.getSon1HaftaGirisler = function (callback) {
+    son1Hafta.setDate(today.getDate() - 7);
     GelenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60*7)
+        tarih: {
+            $gt: son1Hafta
         }
     }, callback).sort([['tarih', 'descending']]);
 }
 
 // Son 1 haftada çıkan araçlar
 module.exports.getSon1HaftaCikislar = function (callback) {
+    son1Hafta.setDate(today.getDate() - 7);
     GidenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60*7)
+        tarih: {
+            $gt: son1Hafta
         }
     }, callback).sort([['tarih', 'descending']]);
 }
 
 // Son 1 Ayda giren araçlar
 module.exports.getSon1AyGirisler = function (callback) {
+    son1Ay.setMonth(today.getMonth() -1)
     GelenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60*30)
+        tarih: {
+            $gt: son1Ay
         }
     }, callback).sort([['tarih', 'descending']]);
 }
 
 // Son 1 Ayda çıkan araçlar
 module.exports.getSon1AyCikislar = function (callback) {
+    son1Ay.setMonth(today.getMonth() -1)
     GidenArac.find({
-        _id: {
-            $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60*30)
+        tarih: {
+            $gt: son1Ay
         }
     }, callback).sort([['tarih', 'descending']]);
 }

@@ -87,6 +87,13 @@
             });
         });
 
+        $('#plaka').keypress(function (e) {
+            if (e.which == 13) {
+                $('#filter').click();
+                return false;
+            }
+        });
+
         $("#filter").click(function () {
             let plaka = $("#plaka").val();
             let q = plaka.toString().replace(/\s/gm, "").toUpperCase();
@@ -96,7 +103,7 @@
                     if (plaka) {
                         window.location.href = '/gelen/filter/' + q + '/' + startDate + '/' + finishDate;
                     } else {
-                    window.location.href = '/gelen/filter/' + startDate + '/' + finishDate;
+                        window.location.href = '/gelen/filter/' + startDate + '/' + finishDate;
                     }
                 } else {
                     if (!plaka) {
@@ -109,6 +116,7 @@
                 if (finishDate) {
                     alert('Başlangıç tarihi girmeden bitiş tarihi ile filtreleme yapılamaz!');
                 } else if (plaka) {
+                    console.log(q);
                     window.location.href = '/gelen/filter/' + q;
                 }
             }
