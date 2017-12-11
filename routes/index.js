@@ -18,7 +18,6 @@ router.get('/', (req, res, next) => {
         if (err) res.send(err)
         son1HaftaGirisler = gelen.length;
 
-
         indexModel.getSon1HaftaCikislar((err, gelen) => {
           if (err) res.send(err)
           son1HaftaCikislar = gelen.length;
@@ -67,10 +66,7 @@ router.get('/', (req, res, next) => {
           })
         })
       })
-
     })
-
-
   })
 
 })
